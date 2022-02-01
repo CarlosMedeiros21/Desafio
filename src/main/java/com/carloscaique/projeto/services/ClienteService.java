@@ -1,5 +1,6 @@
 package com.carloscaique.projeto.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.carloscaique.projeto.domain.Cliente;
@@ -34,5 +35,9 @@ public class ClienteService {
     public void delete(Integer id){
         find(id);
         repo.deleteById(id);
+    }
+
+    public List<Cliente> findAll(){
+        return repo.findAll();
     }
 }
