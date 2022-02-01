@@ -25,4 +25,9 @@ public class ClienteService {
         obj.setId(null);
         return repo.save(obj);
     }
+
+    public Cliente update(Cliente obj){
+        find(obj.getId());   // busca o objeto no banco para saber se tem um ID válido
+        return repo.save(obj);
+    }
 }

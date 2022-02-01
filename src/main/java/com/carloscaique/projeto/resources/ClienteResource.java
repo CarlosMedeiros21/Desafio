@@ -23,13 +23,20 @@ public class ClienteResource {
             return ResponseEntity.ok().body(obj);
         }
 
-        @RequestMapping(method = RequestMethod.POST)
-        public ResponseEntity<Void> insert(@RequestBody Cliente obj){
+        @RequestMapping(method = RequestMethod.POST) // Metodo de Criação
+        public ResponseEntity<Cliente> insert(@RequestBody Cliente obj){
             obj = service.insert(obj);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                     .path("/{id}").buildAndExpand(obj.getId()).toUri();
 
             return ResponseEntity.created(uri).build();
+        }
+
+        @RequestMapping(value="/{id}", method=RequestMethod.PUT)
+        public ResponseEntity<Void> update(@RequestBody Cliente obj, @PathVariable Integer id){
+            obj.setId(id);
+            obj = service.update(obj);
+            return ResponseEntity.noContent().build();
         }
 
 }
