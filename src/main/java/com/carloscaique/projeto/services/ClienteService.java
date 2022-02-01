@@ -30,4 +30,9 @@ public class ClienteService {
         find(obj.getId());   // busca o objeto no banco para saber se tem um ID válido
         return repo.save(obj);
     }
+
+    public void delete(Integer id){
+        find(id);
+        repo.deleteById(id);
+    }
 }
