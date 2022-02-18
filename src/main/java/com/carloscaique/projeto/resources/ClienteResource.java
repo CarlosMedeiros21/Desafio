@@ -23,6 +23,12 @@ public class ClienteResource {
             return ResponseEntity.ok().body(obj);
         }
 
+    @RequestMapping(value="/{cpf}/by_cpf", method=RequestMethod.GET)
+    public ResponseEntity<?> findByCpf(@PathVariable String cpf) {
+        Cliente obj = service.findByCpf(cpf);
+        return ResponseEntity.ok().body(obj);
+    }
+
         @RequestMapping(method = RequestMethod.POST) // Metodo de Criação
         public ResponseEntity<Cliente> insert(@RequestBody Cliente obj){
             obj = service.insert(obj);

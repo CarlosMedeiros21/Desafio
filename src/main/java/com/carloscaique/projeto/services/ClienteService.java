@@ -40,4 +40,11 @@ public class ClienteService {
     public List<Cliente> findAll(){
         return repo.findAll();
     }
+
+    //Fiz uma cópia da pesquisa por ID
+    public Cliente findByCpf(String cpf) {
+        Optional<Cliente> obj = repo.findByCpf(cpf);
+        return obj.orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado! Id: " + cpf + ", Tipo: " + Cliente.class.getName()));
+    }
 }
